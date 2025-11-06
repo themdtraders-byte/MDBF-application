@@ -1,0 +1,130 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply text-xs sm:text-sm;
+  }
+}
+
+
+@layer base {
+  :root {
+    --background: 0 0% 100%; /* #FFFFFF */
+    --foreground: 210 11% 15%; /* #222629 */
+    --card: 0 0% 100%;
+    --card-foreground: 210 11% 15%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 210 11% 15%;
+    --primary: 48 100% 50%; /* #FFD200 */
+    --primary-foreground: 210 40% 9.8%;
+    --secondary: 0 0% 96.1%; /* #F5F5F5 */
+    --secondary-foreground: 210 11% 15%;
+    --muted: 0 0% 90%; /* #E5E5E5 */
+    --muted-foreground: 0 0% 45.1%; /* #737373 */
+    --accent: 0 0% 96.1%; /* #F5F5F5 */
+    --accent-foreground: 210 11% 15%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 89.8%; /* #E5E5E5 */
+    --input: 0 0% 89.8%;
+    --ring: 48 100% 50%;
+    --chart-1: 159 100% 38%;
+    --chart-2: 5 81% 60%;
+    --chart-3: 0 0% 63%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+    --radius: 1rem;
+    --sidebar-background: 0 0% 96.1%; /* Light Gray */
+    --sidebar-foreground: 210 11% 15%; /* Dark Gray */
+    --sidebar-primary: 48 100% 50%; /* #FFD200 */
+    --sidebar-primary-foreground: 210 40% 9.8%;
+    --sidebar-accent: 0 0% 90%; /* Slightly darker gray for hover */
+    --sidebar-accent-foreground: 210 11% 15%;
+    --sidebar-border: 0 0% 89.8%;
+    --sidebar-ring: 48 100% 50%;
+  }
+  .dark {
+    --background: 0 0% 0%; /* #000000 */
+    --foreground: 0 0% 98%; /* #FFFFFF */
+    --card: 0 0% 16.5%; /* #2A2A2A */
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 10%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 48 100% 50%; /* #FFD200 */
+    --primary-foreground: 0 0% 0%;
+    --secondary: 0 0% 7.5%; /* #121212 */
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 20%; /* #333333 */
+    --muted-foreground: 0 0% 70%; /* #B3B3B3 */
+    --accent: 0 0% 12.2%; /* #1F1F1F - Hover */
+    --accent-foreground: 0 0% 98%;
+    --destructive: 5 81% 60%; /* #E74C3C */
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 20%; /* #333333 */
+    --input: 0 0% 20%; /* #333333 */
+    --ring: 48 100% 50%; /* #FFD200 */
+    --chart-1: 159 100% 38%; /* #00C074 */
+    --chart-2: 5 81% 60%; /* #E74C3C */
+    --chart-3: 0 0% 63%; /* #A0A0A0 */
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+    --sidebar-background: 0 0% 0%; /* Black */
+    --sidebar-foreground: 0 0% 70%; /* #B3B3B3 */
+    --sidebar-primary: 48 100% 50%; /* #FFD200 */
+    --sidebar-primary-foreground: 0 0% 0%;
+    --sidebar-accent: 0 0% 12.2%; /* #1F1F1F - Hover */
+    --sidebar-accent-foreground: 0 0% 98%;
+    --sidebar-border: 0 0% 20%; /* #333333 */
+    --sidebar-ring: 48 100% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-secondary text-foreground;
+  }
+  html[lang="ur"] body {
+    @apply text-base sm:text-lg;
+  }
+  .card-title {
+    @apply text-primary;
+  }
+}
+
+/* Custom scrollbar styles */
+@layer utilities {
+  /* For Webkit-based browsers (Chrome, Safari, etc.) */
+  ::-webkit-scrollbar {
+    width: 2px;
+    height: 2px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: transparent;
+  }
+
+  /* For Firefox */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: transparent transparent;
+  }
+
+  /* Hide arrows from number inputs */
+  input[type=number]::-webkit-inner-spin-button,
+  input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  input[type=number] {
+    -moz-appearance: textfield;
+  }
+}

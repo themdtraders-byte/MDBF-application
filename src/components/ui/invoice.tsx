@@ -106,6 +106,7 @@ export function Invoice({
 }: InvoiceProps) {
   const { t } = useLanguage();
   const invoiceRef = React.useRef<HTMLDivElement>(null);
+  const tableContainerRef = React.useRef<HTMLDivElement>(null);
   const [globalProfile, setGlobalProfile] = React.useState<GlobalProfile | null>(null);
 
   React.useEffect(() => {
@@ -123,12 +124,21 @@ export function Invoice({
   
   const handleShare = React.useCallback(() => {
     const node = invoiceRef.current;
-    if (node === null) {
+    const tableContainer = tableContainerRef.current;
+
+    if (node === null || tableContainer === null) {
       return;
     }
     
-    const originalStyle = node.style.width;
-    node.style.width = '1024px'; 
+    // Store original styles
+    const originalNodeWidth = node.style.width;
+    const originalTableMaxHeight = tableContainer.style.maxHeight;
+    const originalTableOverflow = tableContainer.style.overflowY;
+
+    // Apply temporary styles for image generation
+    node.style.width = '1024px';
+    tableContainer.style.maxHeight = 'none';
+    tableContainer.style.overflowY = 'visible';
 
     toPng(node, { cacheBust: true, pixelRatio: 2 })
       .then((dataUrl) => {
@@ -141,7 +151,10 @@ export function Invoice({
         console.error(err);
       })
       .finally(() => {
-        node.style.width = originalStyle;
+        // Restore original styles
+        node.style.width = originalNodeWidth;
+        tableContainer.style.maxHeight = originalTableMaxHeight;
+        tableContainer.style.overflowY = originalTableOverflow;
       });
   }, [invoiceRef, reference]);
 
@@ -252,7 +265,7 @@ export function Invoice({
                   </div>
               </header>
 
-              <main className="max-h-[400px] overflow-y-auto print:max-h-none print:overflow-visible">
+              <main ref={tableContainerRef} className="max-h-[400px] overflow-y-auto print:max-h-none print:overflow-visible">
                   <Table>
                       <TableHeader>
                           <TableRow>

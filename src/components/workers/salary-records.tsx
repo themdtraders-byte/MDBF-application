@@ -637,7 +637,7 @@ export function SalaryRecords() {
                     </div>
                 </CardHeader>
                 <CardContent>
-                    <ScrollArea className="h-[600px]">
+                    <div className="relative h-[600px] overflow-auto">
                         <Table>
                             <TableHeader>
                                 <TableRow>
@@ -683,7 +683,7 @@ export function SalaryRecords() {
                                 )}
                             </TableBody>
                         </Table>
-                    </ScrollArea>
+                    </div>
                 </CardContent>
             </Card>
         </div>
